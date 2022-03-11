@@ -1,17 +1,16 @@
-sto modificando il documento
+Esercitazione mysql
 
-
-
-
-
-
-
-
-
-
-
-Luca Rianna
-anche io :-)
-test notepad
-Francesca Verrilli
-
+Progetto Aeroporto
+Definire un modello entità relazione in grado di rappresentare la gestione degli aeroporti a partire dai seguenti requisiti di progetto:
+1. Le città con un aeroporto di cui non è noto il numero di piste;
+2. Le nazioni da cui parte e arriva il volo con codice 1;
+3. I tipi di aereo usati nei voli che partono da Roma;
+4. I tipi di aereo e il corrispondente numero di passeggeri per i voli che partono da Roma.
+5. Le città da cui partono voli diretti ad Amsterdam, ordinate alfabeticamente;
+6. Il numero di voli che partono il venerdì da Napoli;
+7. Le città italiane da cui partono almeno 2 voli alla settimana diretti in Olanda;
+8. Le città da cui parte l'aereo caratterizzato dal massimo numero di passeggeri;
+9. Le città su cui è diretto l'aereo caratterizzato dal massimo numero di passeggeri;
+10. Le città che sono servite dall'aereo caratterizzato dal massimo numero di passeggeri;
+Una volta definito il modello ER, costruire lo schema del db e popolarlo con dei dati di esempio, producendo rispettivamente gli script DDL e DML. Infine, produrre uno script con le query per i punti sopra elencati.
+Fornire la documentazione di analisi per la realizzazione del progetto e pushare tutto il lavoro sul repository staccando un branch da develop.
