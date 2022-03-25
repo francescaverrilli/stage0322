@@ -1,0 +1,30 @@
+CREATE TABLE IF NOT EXISTS aeroporto (
+    idAeroporto INT,
+    citta VARCHAR(45) NOT NULL,
+    nome VARCHAR(45),
+    nazione VARCHAR(45) NOT NULL,
+    numeroPiste INT,
+	PRIMARY KEY (idAeroporto)
+    );
+
+CREATE TABLE IF NOT EXISTS aereo (
+    idAereo INT,
+    tipo VARCHAR(10),
+    numeroPosti BIGINT NOT NULL,
+    nome VARCHAR(45) NOT NULL,
+    PRIMARY KEY(idAereo)
+    );
+
+CREATE TABLE IF NOT EXISTS volo (
+    idVolo INT NOT NULL,
+    numeroPasseggeri BIGINT NOT NULL ,
+    dataPartenza VARCHAR(45) NOT NULL,
+    dataArrivo VARCHAR(45) NOT NULL,
+    partenza INT NOT NULL,
+    arrivo INT NOT NULL,
+    aereo INT NOT NULL,
+	PRIMARY KEY (idVolo),
+    FOREIGN KEY (partenza) REFERENCES aeroporto(idAeroporto),
+    FOREIGN KEY (arrivo) REFERENCES aeroporto(idAeroporto),
+    FOREIGN KEY (aereo) REFERENCES aereo(idaereo)
+    );

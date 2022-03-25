@@ -1,0 +1,67 @@
+1
+SELECT NOME FROM AEROPORTO WHERE NUMEROPISTE IS NULL;
+
+2
+SELECT partenza, arrivo
+FROM volo 
+JOIN aeroporto partenza ON partenza.idaeroporto = volo.partenza
+JOIN aeroporto arrivo ON arrivo.idaeroporto = volo.arrivo
+WHERE volo.idvolo = 1;
+
+3
+SELECT tipo, aeroporto.citta
+FROM aereo
+JOIN volo ON volo.aereo = aereo.idaereo
+JOIN aeroporto ON aeroporto.idaeroporto = volo.partenza
+WHERE citta='ROMA';
+
+4
+SELECT tipo, volo.dataPartenza, volo.numeroPasseggeri, volo.partenza, volo.arrivo
+FROM aereo, aeroporto, volo
+where volo.aereo = aereo.idaereo 
+AND aeroporto.idaeroporto = volo.partenza
+and citta='ROMA';
+
+5
+SELECT DISTINCT partenza,arrivo
+FROM volo 
+JOIN aeroporto partenza ON partenza.idaeroporto = volo.partenza
+JOIN aeroporto arrivo ON partenza.idaeroporto = volo.arrivo
+WHERE partenza = 'Amsterdam'
+ORDER BY partenza;
+
+7
+SELECT WEEK(V.dataPartenza) AS dPartenza, COUNT(V.dataPartenza),
+AP.citta AS cittaPartenza, AA.citta AS cittaArrivo, AA.nazione, V.idVolo
+FROM volo AS V
+JOIN aeroporto AP ON AP.idAeroporto = V.partenza
+JOIN aeroporto AA ON AA.idAeroporto = V.arrivo
+WHERE AA.nazione = 'Olanda' AND AP.nazione= 'Italia'
+GROUP BY dPartenza, cittaPartenza
+HAVING count(dPartenza) < 7
+
+
+8	
+SELECT aereo.nome, volo.numeroPasseggeri, MAX(volo.numeroPasseggeri), aeroporto.citta
+FROM volo , aereo , aeroporto
+WHERE volo.partenza = aeroporto.idAeroporto;
+
+9
+SELECT aereo.nome, volo.numeroPasseggeri, MAX(volo.numeroPasseggeri), aeroporto.citta , aeroporto.idAeroporto, idAereo
+FROM volo, aereo, aeroporto
+WHERE volo.arrivo = aeroporto.idAeroporto;
+
+10
+
+SELECT AP.citta, AA.citta
+FROM volo 
+JOIN aeroporto AS AP ON AP.idaeroporto = volo.partenza
+JOIN aeroporto AS AA ON AA.idaeroporto = volo.arrivo
+WHERE volo.aereo = (
+SELECT volo.idvolo
+FROM volo
+WHERE volo.numeroPasseggeri = (
+SELECT MAX(numeroPasseggeri) 
+FROM volo
+)
+);
