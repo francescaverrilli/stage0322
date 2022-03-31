@@ -14,20 +14,19 @@ public class JdbcDaoFactory extends DaoFactory{
 
 	@Override
 	public GenericDao<Aeroporto> getAeroportoDao() {
-		// TODO Auto-generated method stub
-		return null;
+		return AeroportoDaoImpl.getInstance();
 	}
 
 	@Override
 	public GenericDao<Volo> getVoloDao() {
-		return VoloDaoImplementation.getInstance();
+		return VoloDaoImpl.getInstance();
 		
 	}
 
 	@Override
 	public GenericDao<Aereo> getAereoDao() {
 		// TODO Auto-generated method stub
-		return null;
+		return AereoDaoImpl.getInstance();
 	}
 	
 	static Connection getConnection() throws SQLException {

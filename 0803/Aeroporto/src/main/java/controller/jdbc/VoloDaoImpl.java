@@ -13,13 +13,13 @@ import model.Aereo;
 import model.Aeroporto;
 import model.Volo;
 
-public class VoloDaoImplementation implements GenericDao<Volo>{
+public class VoloDaoImpl implements GenericDao<Volo>{
 
-	private static VoloDaoImplementation instance=new VoloDaoImplementation();
-	private VoloDaoImplementation() {
+	private static VoloDaoImpl instance=new VoloDaoImpl();
+	private VoloDaoImpl() {
 		
 	} 
-	public static VoloDaoImplementation getInstance() {
+	public static VoloDaoImpl getInstance() {
 		return instance;
 	}
 	
@@ -122,12 +122,15 @@ public class VoloDaoImplementation implements GenericDao<Volo>{
 
 	@Override
 	public boolean insert(Volo a) {
-		String query ="insert into volo(nome,numeroPosti,tipo) values(?,?,?)";
+		String query ="insert into volo(aereo,partenza,dataArrivo,dataPartenza,numeroPassegeri,arrivo) values(?,?,?,?,?,?,)";
 
 		try(Connection c=JdbcDaoFactory.getConnection();PreparedStatement ps=c.prepareStatement(query)){
-		ps.setString(1,"");//nelle virgolette va inserito il valore che si vuole dare ai ???
-		ps.setInt(2,1);
-		ps.setString(3,"");
+		ps.setInt(1,a.getAereo().getIdAereo());
+		ps.setInt(2,a.getPartenza().getIdAeroporto());
+		ps.setString(3,a.getDataArrivo());
+		ps.setString(4,a.getDataPartenza());
+		ps.setInt(5,a.getNumeroPasseggeri());
+		ps.setInt(6,a.getArrivo().getIdAeroporto());
 		int r=ps.executeUpdate();
 		return r==1;
 		}catch (SQLException e){
@@ -135,14 +138,15 @@ public class VoloDaoImplementation implements GenericDao<Volo>{
 		}
 		return false;
 		
+		
 	}
 
 	@Override
 	public boolean delete(Volo a) {
-		String query ="delete * from volo where id=?";
+		String query ="delete from volo where idVolo=?";
 
 		try(Connection c=JdbcDaoFactory.getConnection();PreparedStatement ps=c.prepareStatement(query)){
-		ps.setInt(1,1);
+		ps.setInt(1,a.getIdVolo());
 		int r=ps.executeUpdate();
 		return r==1;
 		}catch (SQLException e){
@@ -154,11 +158,11 @@ public class VoloDaoImplementation implements GenericDao<Volo>{
 
 	@Override
 	public boolean update(Volo a) {
-		String query ="update volo set name=? id=?";
+		String query ="update idVolo=? set  idVolo=?";
 
-		try(Connection c=JdbcDaoFactory.getConnection();PreparedStatement ps=c.prepareStatement(query)){
-		ps.setString(1,"");	
-		ps.setInt(2,1);
+		try(Connection c=JdbcDaoFactory.getConnection();PreparedStatement ps=c.prepareStatement(query)){	
+		ps.setInt(1,a.getIdVolo());
+		ps.setInt(2,a.getIdVolo());
 		int r=ps.executeUpdate();
 		return r==1;
 		}catch (SQLException e){

@@ -12,6 +12,10 @@ public interface GenericDao <B>{
 	boolean insert(B a);
 	boolean delete(B a);
 	boolean update(B a);
+
+
+
+	
 	
 
 }
