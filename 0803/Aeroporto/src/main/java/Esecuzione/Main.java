@@ -44,13 +44,13 @@ public class Main {
 		//System.out.println(DaoFactory.getDaoFactory().getAereoDao().getById(3)); //funziona
 		
 		Aereo aereo1=new Aereo(12, "di linea", 200, "Boeing 777");//idAereo,nome,numeroPosti,tipo
-		
+		aereo1.getNome();
 		//System.out.println(DaoFactory.getDaoFactory().getAereoDao().insert(aereo1)); //funziona
 		//System.out.println(DaoFactory.getDaoFactory().getAereoDao().delete(aereo1)); //funziona
-		System.out.println(DaoFactory.getDaoFactory().getAereoDao().update(aereo1));
+		//System.out.println(DaoFactory.getDaoFactory().getAereoDao().update(aereo1));
 
 		
-		   
+		                             
 		
 		//aeroporto	
 		//DaoFactory.getDaoFactory().getAeroportoDao().getAll().forEach(System.out::println);
