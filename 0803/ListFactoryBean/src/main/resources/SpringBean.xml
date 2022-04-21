@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="CustomerBean" class="com.lr.Customer">
+		<property name="lists">
+			<bean class="org.springframework.beans.factory.config.ListFactoryBean">
+				<property name="targetListClass">
+					<value>java.util.ArrayList</value>
+				</property>
+				<property name="sourceList">
+					<list>
+						<value>1</value>
+						<value>2</value>
+						<value>3</value>
+					</list>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	
+	<bean id="CustomerBeanSet" class="set.CustomerSet">
+		<property name="sets">
+			<bean class="org.springframework.beans.factory.config.SetFactoryBean">
+				<property name="targetSetClass">
+					<value>java.util.HashSet</value>
+				</property>
+				<property name="sourceSet">
+					<list>
+						<value>4</value>
+						<value>5</value>
+						<value>6</value>
+					</list>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+
+	<bean id="CustomerBeanMap" class="map.CustomerMap">
+		<property name="maps">
+			<bean class="org.springframework.beans.factory.config.MapFactoryBean">
+				<property name="targetMapClass">
+					<value>java.util.HashMap</value>
+				</property>
+				<property name="sourceMap">
+					<map>
+						<entry key="Key1" value="1" />
+						<entry key="Key2" value="2" />
+						<entry key="Key3" value="3" />
+					</map>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	
+	<bean id="customer" class="map.CustomerMap">
+		<property name="date" value="2010-01-31" />
+	</bean>
+
+</beans>
