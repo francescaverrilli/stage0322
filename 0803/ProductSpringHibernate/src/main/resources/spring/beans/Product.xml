@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans">
+
+	<!-- Product business object -->
+
+	<bean class="bo.impl.ProductBoImpl" id="productBo">
+		<property ref="productDao" name="productDao" />
+		<property ref="productQohBo" name="productQohBo" />
+	</bean>
+
+	<!-- Product Data Access Object -->
+
+	<bean class="dao.impl.ProductDaoImpl" id="productDao">
+		<property ref="sessionFactory" name="sessionFactory" />
+	</bean>
+
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean"
+		id="productBoProxy">
+		<property ref="productBo" name="target" />
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+			</list>
+		</property>
+	</bean>
+</beans>
