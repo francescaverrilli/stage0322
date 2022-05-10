@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	
+
+	<bean id="PersonBean" class="com.lr.Person">
+		<property name="name" value="luca" />
+		<property name="address" value="address1" />
+		<property name="age" value="29" />
+	</bean>
+	
+	<bean id="CustomerBean" class="com.lr.Customer">
+		<constructor-arg>
+			<bean class="com.lr.Person">
+				<property name="name" value="Francesca" />
+				<property name="address" value="address2" />
+				<property name="age" value="00" />
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+</beans>

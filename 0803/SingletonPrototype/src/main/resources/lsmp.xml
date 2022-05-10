@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<property name="lists">
+	<list>
+		<value>1</value>
+		<ref bean="PersonBean" />
+		<bean class="com.lr.Person">
+			<property name="name" value="Luca" />
+			<property name="address" value="address" />
+			<property name="age" value="29" />
+		</bean>
+	</list>
+</property>
+
+<property name="sets">
+	<set>
+		<value>1</value>
+		<ref bean="PersonBean" />
+		<bean class="com.lr.Person">
+			<property name="name" value="Luca Set" />
+			<property name="address" value="address" />
+			<property name="age" value="29" />
+		</bean>
+	</set>
+</property>
+
+<property name="maps">
+	<map>
+		<entry key="Key 1" value="1" />
+		<entry key="Key 2" value-ref="PersonBean" />
+		<entry key="Key 3">
+			<bean class="com.lr.Person">
+				<property name="name" value="Luca Map" />
+				<property name="address" value="address" />
+				<property name="age" value="29" />
+			</bean>
+		</entry>
+	</map>
+
+</property>

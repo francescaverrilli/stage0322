@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-mapping>
+
+	<class catalog="negozio" table="product_qoh"
+		name="com.lr.product.ProductQoh">
+		<id name="qohId" type="java.lang.Long">
+			<column name="QOH_ID" />
+			<generator class="identity" />
+		</id>
+
+		<property name="productId" type="long">
+			<column name="PRODUCT_ID" not-null="true" />
+		</property>
+
+		<property name="qty" type="int">
+			<column name="QTY" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>
